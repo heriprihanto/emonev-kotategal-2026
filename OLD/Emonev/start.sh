@@ -1,1 +1,0 @@
-sencha app watch --port 1842

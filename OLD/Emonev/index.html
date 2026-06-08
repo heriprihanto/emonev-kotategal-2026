@@ -1,0 +1,70 @@
+
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+</style>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+
+    <title>e-Monev Kota Tegal</title>
+
+    
+
+    <script type="text/javascript">
+      const BASE_URL = "https://monevrkpd.tegalkota.go.id/emonev2025/",
+      xtahun1=2021,xtahun2=2022,xtahun3=2023,xtahun4=2024,xtahun5=2025,
+        REMOTE_URL = BASE_URL+"api/",
+        REPORT_URL = BASE_URL+"reports/preview";
+        const vJADWAL = JSON.parse('[{"id":"1","jadwal":"Perencanaan","tahun":"2025","tgl1":"2023-08-15","tgl2":"2023-08-15","status":null,"ket":null,"tgl11":"15 Aug 2023","tgl22":"15 Aug 2023"},{"id":"2","jadwal":"Pengumpulan Data","tahun":"2023","tgl1":"2023-08-15","tgl2":"2023-08-15","status":null,"ket":null,"tgl11":"15 Aug 2023","tgl22":"15 Aug 2023"},{"id":"3","jadwal":"Pemeriksaan Data","tahun":"2025","tgl1":"2023-08-15","tgl2":"2023-08-15","status":null,"ket":null,"tgl11":"15 Aug 2023","tgl22":"15 Aug 2023"},{"id":"4","jadwal":"Publikasi Data","tahun":"2023","tgl1":"2023-08-15","tgl2":"2023-08-15","status":null,"ket":null,"tgl11":"15 Aug 2023","tgl22":"15 Aug 2023"}]');
+      let vUSER_INFO = JSON.parse(
+        '{"username":"adminlaba","e_mail":"adminlaba@gmail.com","id":458,"role_id":27,"display_name":"Administrator Simlaba","id_instansi":0,"id_opd":1110,"kd_urusan":1,"kd_bidang":1,"kd_sub":1,"kd_unit":0,"nm_sub_unit":0,"nm_singkat":0,"nm_unit":0,"id_unit":0,"id_sub":0,"app_id":"5","role":"Admin","app_name":"laba","s_uuid":"b69dffea.2e5f.11eb.83c2.c72e28a80a6c","tahun":"2025","role_id_app":"2"}'
+      );
+      let DASHBOARD_INFO = JSON.parse(
+        '{"jml1":"124","jml2":"19","jml3":"1,2 T","jml4":"950 M","jml5":"98","jml6":"2"}'
+      );
+      const BWSRwidth =
+        window.innerWidth > 0 ? window.innerWidth : screen.width;
+      const BWSRheight =
+        window.innerHeight > 0 ? window.innerHeight : screen.height;
+      const HeaderHeight = 180;
+      const PanelCompHeight = BWSRheight - HeaderHeight, iFrameHeight = (BWSRheight - 140);
+      const csrf_value = "pSaYbpqjE36nNyFGl";
+      let d = Date(Date.now());
+      let app_token = "b69dffea.2e5f.11eb.83c2.c72e28a80a6c",xxkodeurusan=1,xxkodetahun=5,xxtahun1=2019,xxtahun2=2023,xxtahun12=2023;
+      let vTAHUN = vUSER_INFO.tahun,vUSER_OPD = vUSER_INFO.display_name,
+        appVersion = "5.0.1",
+        dateNow = d.toString(),
+        ROLE_ID_APP = 2;
+      let isAdmin = true;
+      let isVerif,isProdusenData;
+      if (ROLE_ID_APP > 1) {
+        isAdmin = false;
+      }
+      let isUser = !isAdmin,
+        vKD_PERUBAHAN = 1,
+        mkd_arsip = 1;
+      const vTAHAP = 1;
+      const logout_url = "";
+      const profile_url = "";
+      let vNAMA_OPD = "";
+      let vNAMA_PENGGUNA = "Administrator";
+      let vDASHBOARD_INFO = JSON.parse(
+        '{"kotak1":185,"kotak2":185,"kotak3":2098,"kotak4":"804 M"}'
+      );
+      var userman_url = "";
+    </script>
+
+    <link rel="stylesheet" href="assets/leaflet/leaflet.css?v=2" />
+    <script src="assets/leaflet/leaflet.js?v=2"></script>
+    <script src="assets/leaflet/leaflet-search.js"></script>
+
+    <script id="microloader" data-app="0d3cea28-7502-430a-b593-bf6d3dc3cdd3" type="text/javascript" src="bootstrap.js"></script>
+
+</head>
+<body class="launching">
+  <div class="container"><div class="loading-screen" id="loading-screen"><div class="sun"></div><div class="orbit orbit1"><div class="planetX planet1"></div></div><div class="orbit orbit2"><div class="planetX planet2"></div></div><div class="orbit orbit3"><div class="planetX planet3"></div></div></div></div>
+</body>
+</html>
+

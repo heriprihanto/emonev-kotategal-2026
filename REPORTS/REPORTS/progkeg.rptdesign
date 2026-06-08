@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">948</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">948</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">948</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="DALEV" id="946">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost/dalev2023</property>
+            <property name="odaUser">e-planning</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">aGVyaXByaWhhbnRvMTQwMjg2</encrypted-property>
+            <property name="odaJndiName">java:comp/env/jdbc/Dalev</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="renja" id="948">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">kode_urusan</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">kode_urusan</text-property>
+                    <text-property name="heading">kode_urusan</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">nama_urusan</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">nama_urusan</text-property>
+                    <text-property name="heading">nama_urusan</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kode_bidang_urusan</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">kode_bidang_urusan</text-property>
+                    <text-property name="heading">kode_bidang_urusan</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">nama_bidang_urusan</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">nama_bidang_urusan</text-property>
+                    <text-property name="heading">nama_bidang_urusan</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kode_program</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">kode_program</text-property>
+                    <text-property name="heading">kode_program</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">program</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">program</text-property>
+                    <text-property name="heading">program</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kode_giat</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">kode_giat</text-property>
+                    <text-property name="heading">kode_giat</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">kegiatan</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">kegiatan</text-property>
+                    <text-property name="heading">kegiatan</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">kode_urusan</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nama_urusan</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">kode_bidang_urusan</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">nama_bidang_urusan</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">kode_program</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">program</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">kode_giat</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">kegiatan</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">DALEV</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">kode_urusan</property>
+                    <property name="nativeName">kode_urusan</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">nama_urusan</property>
+                    <property name="nativeName">nama_urusan</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">kode_bidang_urusan</property>
+                    <property name="nativeName">kode_bidang_urusan</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">nama_bidang_urusan</property>
+                    <property name="nativeName">nama_bidang_urusan</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">kode_program</property>
+                    <property name="nativeName">kode_program</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">program</property>
+                    <property name="nativeName">program</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">kode_giat</property>
+                    <property name="nativeName">kode_giat</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">kegiatan</property>
+                    <property name="nativeName">kegiatan</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT 
+  p.kode_urusan,
+  p.nama_urusan,
+  p.kode_bidang_urusan,
+  p.nama_bidang_urusan,
+  p.kode_program,
+  p.program,
+  p.kode_giat,
+  p.kegiatan
+FROM
+  public.data_progkeg_2 p
+  WHERE p.program !='PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH KABUPATEN/KOTA'
+UNION ALL
+SELECT 
+'x' as kode_urusan,
+'Non Urusan' as nama_urusan,
+'x.xx' as kode_bidang_urusan,
+'Non Bidang'  as nama_bidang_urusan,
+'x.xx' as kode_program,
+k.program,k.kode_giat,k.kegiatan
+FROM public.data_progkeg_2 k WHERE k.program='PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH KABUPATEN/KOTA']]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">custom</property>
+            <property name="orientation">landscape</property>
+            <property name="topMargin">0.2in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0.2in</property>
+            <property name="rightMargin">0.2in</property>
+            <property name="height">8.5in</property>
+            <property name="width">13in</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="1388">
+            <property name="dataSet">renja</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">kode_urusan</property>
+                    <text-property name="displayName">kode_urusan</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kode_urusan"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nama_urusan</property>
+                    <text-property name="displayName">nama_urusan</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nama_urusan"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">kode_bidang_urusan</property>
+                    <text-property name="displayName">kode_bidang_urusan</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kode_bidang_urusan"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nama_bidang_urusan</property>
+                    <text-property name="displayName">nama_bidang_urusan</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nama_bidang_urusan"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">kode_program</property>
+                    <text-property name="displayName">kode_program</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kode_program"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">program</property>
+                    <text-property name="displayName">program</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["program"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">kode_giat</property>
+                    <text-property name="displayName">kode_giat</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kode_giat"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">kegiatan</property>
+                    <text-property name="displayName">kegiatan</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["kegiatan"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1432"/>
+            <column id="1433">
+                <property name="width">1cm</property>
+            </column>
+            <column id="1434">
+                <property name="width">1cm</property>
+            </column>
+            <column id="1435">
+                <property name="width">1cm</property>
+            </column>
+            <column id="1436"/>
+            <header>
+                <row id="1389">
+                    <cell id="1390">
+                        <label id="1391">
+                            <text-property name="text">Kode</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1392">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <label id="1393">
+                            <text-property name="text">Urusan / Bidang urusan / Program / Kegiatan</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <group id="1440">
+                <property name="groupName">NewTableGroup1</property>
+                <expression name="keyExpr" type="javascript">row["kode_urusan"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["kode_urusan"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="1441">
+                        <cell id="1442">
+                            <data id="1459">
+                                <property name="resultSetColumn">kode_urusan</property>
+                            </data>
+                        </cell>
+                        <cell id="1443">
+                            <data id="1410">
+                                <property name="resultSetColumn">nama_urusan</property>
+                            </data>
+                        </cell>
+                        <cell id="1444"/>
+                        <cell id="1445"/>
+                        <cell id="1446"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="1450">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <cell id="1451"/>
+                        <cell id="1452"/>
+                        <cell id="1453"/>
+                        <cell id="1454"/>
+                        <cell id="1455"/>
+                    </row>
+                </footer>
+            </group>
+            <group id="1460">
+                <property name="groupName">NewTableGroup2</property>
+                <expression name="keyExpr" type="javascript">row["kode_bidang_urusan"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["kode_bidang_urusan"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="1461">
+                        <cell id="1462">
+                            <data id="1479">
+                                <property name="resultSetColumn">kode_bidang_urusan</property>
+                            </data>
+                        </cell>
+                        <cell id="1463"/>
+                        <cell id="1464">
+                            <data id="1414">
+                                <property name="resultSetColumn">nama_bidang_urusan</property>
+                            </data>
+                        </cell>
+                        <cell id="1465"/>
+                        <cell id="1466"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="1470">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <cell id="1471"/>
+                        <cell id="1472"/>
+                        <cell id="1473"/>
+                        <cell id="1474"/>
+                        <cell id="1475"/>
+                    </row>
+                </footer>
+            </group>
+            <group id="1480">
+                <property name="groupName">NewTableGroup3</property>
+                <expression name="keyExpr" type="javascript">row["kode_program"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["kode_program"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="1481">
+                        <cell id="1482">
+                            <data id="1499">
+                                <property name="resultSetColumn">kode_program</property>
+                            </data>
+                        </cell>
+                        <cell id="1483"/>
+                        <cell id="1484"/>
+                        <cell id="1485">
+                            <data id="1418">
+                                <property name="resultSetColumn">program</property>
+                            </data>
+                        </cell>
+                        <cell id="1486"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="1490">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <cell id="1491"/>
+                        <cell id="1492"/>
+                        <cell id="1493"/>
+                        <cell id="1494"/>
+                        <cell id="1495"/>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="1406">
+                    <cell id="1407">
+                        <data id="1420">
+                            <property name="resultSetColumn">kode_giat</property>
+                        </data>
+                    </cell>
+                    <cell id="1409"/>
+                    <cell id="1411"/>
+                    <cell id="1413"/>
+                    <cell id="1415">
+                        <data id="1422">
+                            <property name="resultSetColumn">kegiatan</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1423">
+                    <cell id="1424"/>
+                    <cell id="1425"/>
+                    <cell id="1426"/>
+                    <cell id="1427"/>
+                    <cell id="1428"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

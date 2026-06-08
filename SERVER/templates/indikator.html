@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% block title %}Beranda - {% endblock %}
+
+
+{% block content %}
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-wrapper">
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+
+				<div class="page-header">
+					<div class="page-block">
+						<div class="row align-items-center">
+							<div class="col-md-12">
+								<div class="page-header-title">
+									<h5 class="m-b-10">{{ datax['indikator'][0]['tolok_ukur'] }} </h5>
+								</div>
+								<p>{{ datax['indikator'][0]['ket'] }}</p>
+								<!--
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item">
+										<a href="index.html">
+											<i class="feather icon-home"></i>
+										</a>
+									</li>
+									<li class="breadcrumb-item">
+										<a href="#!">To Do</a>
+									</li>
+									<li class="breadcrumb-item">
+										<a href="#!">To Do</a>
+									</li>
+								</ul>
+								-->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="main-body">
+					<div class="page-wrapper">
+
+						<div class="row">
+
+							<div class="col-xl-5">
+								<div class="card">
+									<div class="card-header">
+										<h5>Tabel Capaian</h5>
+									</div>
+									
+									<div class="card-body">
+										<section id="task-container">
+											<table class="table table-hover m-b-0 table-striped">
+												<thead>
+												<tr class="table-success">
+												<th><span>Tahun</span></th>
+												<th><span>Capaian ({{ datax['indikator'][0]['satuan'] }})</span></th>
+												</tr>
+												</thead>
+												<tbody>
+                                                    <tr><td>2021</td><td>{{ datax['indikator'][0]['ck1'] }}</td></tr>
+                                                    <tr><td>2022</td><td>{{ datax['indikator'][0]['ck2'] }}</td></tr>
+                                                    <tr><td>2023</td><td>{{ datax['indikator'][0]['ck3'] }}</td></tr>
+                                                    <tr><td>2024</td><td>{{ datax['indikator'][0]['ck4'] }}</td></tr>
+                                                    <tr><td>2025</td><td>{{ datax['indikator'][0]['ck5'] }}</td></tr>
+												</tbody>
+											</table>
+										
+										</section>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-xl-7">
+								<div class="card">
+									<div class="card-header">
+										<h5>Grafik Capaian {{datax.tolok_ukur}}</h5>
+									</div>
+									
+									<div class="card-body">
+										<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+										<div id="chart-indikator"></div>
+										<script>
+                                                const strtahun = ['2021', '2022', '2023', '2024', '2025'];
+
+												var options1 = {
+													chart: {
+														height: 230,
+														type: 'line',
+														toolbar: {
+															show: false,
+														},
+													},
+													dataLabels: {
+														enabled: false
+													},
+													stroke: {
+														width: 2,
+														curve: 'smooth'
+													},
+                                                xaxis: {categories: strtahun},
+												series: [
+														{name: 'Kota Tegal',
+															data: [
+                                                                "{{ datax['indikator'][0]['ck1'] }}",
+                                                                "{{ datax['indikator'][0]['ck2'] }}",
+                                                                "{{ datax['indikator'][0]['ck3'] }}",
+                                                                "{{ datax['indikator'][0]['ck4'] }}",
+                                                                "{{ datax['indikator'][0]['ck5'] }}"
+                                                            ]
+														}, 
+														/*
+														{name: 'Prov. Jateng',
+															data: [{"x":2020,"y":"2"},{"x":2021,"y":"3"},{"x":2022,"y":"4"},{"x":2023,"y":"5"}]
+														}, 
+														{name: 'Nasional',
+															data: [{"x":2020,"y":"1"},{"x":2021,"y":"4"},{"x":2022,"y":"5"},{"x":2023,"y":"6"}]
+														},
+														*/ 
+														
+													],
+													legend: {
+														position: 'top',
+													},
+												
+													yaxis: {
+														show: true,
+														//min: -5,
+														//max: 10,
+														labels: {
+															style: {
+																color: '#ccc'
+															}
+														}
+													},
+													colors: ['#73b4ff', '#FFB64D','#FF5370'],
+													fill: {
+														type: 'gradient',
+														gradient: {
+															shade: 'light',
+															gradientToColors: ['#4099ff', '#FFB64D','#FF5370'],
+															shadeIntensity: 0.5,
+															type: 'horizontal',
+															opacityFrom: 1,
+															opacityTo: 1,
+															stops: [0, 100]
+														},
+													},
+													markers: {
+														size: 5,
+														colors: ['#4099ff', '#FFB64D','#FF5370'],
+														opacity: 0.9,
+														strokeWidth: 2,
+														hover: {
+															size: 7,
+														}
+													},
+													grid: {
+														borderColor: '#cccccc3b',
+													}
+												}
+												var chart = new ApexCharts(document.querySelector("#chart-indikator"), options1);
+												chart.render();
+
+									
+												
+										</script>
+									</div>
+
+									<div class="card-header">
+										<h5>Analisa Capaian</h5>
+									</div>
+									
+									<div class="card-body">
+
+									</div>
+
+									<div class="card-header">
+										<h5>Rekomendasi</h5>
+									</div>
+									
+									<div class="card-body">
+										
+									</div>
+
+									
+
+								</div>
+
+								
+
+							</div>
+
+
+							
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

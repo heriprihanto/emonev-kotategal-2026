@@ -1,0 +1,1 @@
+pm2 start "sh /home/aplikasi/WEB_APPS/EMONEV/EMONEV_2025_PYTHON/SERVER/start.sh" --name emonev2025

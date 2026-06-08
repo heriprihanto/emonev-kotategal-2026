@@ -1,0 +1,107 @@
+{% include 'header.html' %}
+
+
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+
+
+
+
+			<div class="row">
+				<div class="col-sm-10" style="margin: auto;">
+
+					<div class="card tabs-card">
+						<div class="card-body">
+							<div class="page-header-title border-bottom pb-2 mb-2">
+								<h4>PERENCANAAN PERANGKAT DAERAH KOTA TEGAL</h4>
+							</div>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr class="table-danger">
+											<th>Kode</th>
+											<th>Perangkat Daerah</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for opd in opdlist %}
+										<tr>
+											<td>{{ opd[0] }}</td>
+											<td><a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-idpd="{{ opd[1] }}" data-bs-pd="{{ opd[3] }}"> {{
+													opd[3] }}</a></td>
+										</tr>
+										{% endfor %}
+
+
+									</tbody>
+								</table>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="laporanModal" tabindex="-1" aria-labelledby="laporanModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="laporanModalLabel">Jenis Dokumen Perencanaan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="divmodaldokrenpd">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const laporanModal = document.getElementById('laporanModal')
+	if (laporanModal) {
+		laporanModal.addEventListener('show.bs.modal', event => {
+		const button = event.relatedTarget
+		const opd = button.getAttribute('data-bs-pd')
+		const idpd = button.getAttribute('data-bs-idpd')
+
+		const modalTitle = laporanModal.querySelector('.modal-title')
+		modalTitle.textContent = opd
+
+		fetch('dokrenpd/'+idpd)
+			.then((response) => {
+				return response.text();
+			})
+			.then((html) => {
+				document.getElementById('divmodaldokrenpd').innerHTML = html     
+			})
+			.catch(error => console.error('Error:', error));
+	
+
+		//modalBodyInput.value = recipient
+	})
+	}
+</script>
+
+{% include 'footer.html' %}

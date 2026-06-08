@@ -1,0 +1,16 @@
+[Unit]
+Description=Uvicorn ASGI server
+After=network.target
+
+[Service]
+User={youruser}
+Group={yourgroup}
+WorkingDirectory=/home/{username}/sub.website.com
+ExecStart=/usr/bin/env uvicorn app:app --host 127.0.0.1 --port 8000 --workers 2
+Restart=always
+RestartSec=25
+KillMode=mixed
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

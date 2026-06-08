@@ -1,0 +1,150 @@
+{% include 'header.html' %}
+
+
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+
+
+
+
+			<div class="row">
+				<div class="col-sm-10" style="margin: auto;">
+
+					<div class="card tabs-card">
+						<div class="card-body">
+							<div class="page-header-title border-bottom pb-2 mb-2">
+								<h4>KINERJA PERANGKAT DAERAH KOTA TEGAL</h4>
+							</div>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr class="table-danger">
+											<th>Kode</th>
+											<th>Perangkat Daerah</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for opd in opdlist %}
+										<tr>
+											<td>{{ opd[0] }}</td>
+											<td><a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-idpd="{{ opd[1] }}" data-bs-pd="{{ opd[3] }}"> {{
+													opd[3] }}</a></td>
+										</tr>
+										{% endfor %}
+
+
+									</tbody>
+								</table>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="laporanModal" tabindex="-1" aria-labelledby="laporanModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="laporanModalLabel">Jenis Laporan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form action="{{ thisurl }}/reports/preview" method="post" target="_blank">
+					<div class="row">
+						<div class="col-md-12">
+							
+								<div class="mb-3"><label class="form-label" for="formLaporanKinerja1">Jenis Laporan</label> 
+									<select name="report_name" class="form-select" id="formLaporanKinerja1">
+										<option value="eval_renja">1. Evaluasi Hasil Renja PD</option>
+										<option value="capaian_iku_pd">2. Capaian IKU PD</option>
+										<option value="capaian_kinerja_pd">3. Capaian Indikator Kinerja PD</option>
+										<option value="realisasi_anggaran_pd">4. Realisasi Anggaran</option>
+										<option value="efisiensi_pd">5. Efisiensi dan Efektifitas Kinerja</option>
+										<option value="kesesuaian_pd">6. Tingkat Kesesuaian Indikator</option>
+									</select>
+								</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							
+								<div class="mb-3"><label class="form-label" for="formLaporanKinerja1">Tahun</label> 
+									<select name="ptahun" class="form-select" id="formLaporanKinerja1">
+										<option>2021</option>
+										<option>2022</option>
+										<option>2023</option>
+										<option>2024</option>
+										<option value="2025" selected>2025</option>
+									</select>
+								</div>
+						</div>
+						<div class="col-md-6">
+							
+							<div class="mb-3"><label class="form-label" for="formLaporanKinerja1">Triwulan</label> 
+								<select name="ptw" class="form-select" id="formLaporanKinerja1">
+									<option value="1">I (Satu)</option>
+									<option value="2">II (Dua)</option>
+									<option value="3">III (Tiga)</option>
+									<option value="3">IV (Empat)</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<input type="hidden" name="pid_pd" id="pid_pd">
+							<input type="hidden" name="pid_sub_pd" id="pid_sub_pd">
+							<input type="hidden" name="puser" value="guest">
+							<input type="hidden" name="pfooter" value="Tegal,..">
+							<input type="hidden" name="format" value="html">
+							<button type="submit" class="btn btn-primary mb-4">Tampilkan</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const laporanModal = document.getElementById('laporanModal')
+	if (laporanModal) {
+		laporanModal.addEventListener('show.bs.modal', event => {
+		const button = event.relatedTarget
+		const opd = button.getAttribute('data-bs-pd')
+		const idpd = button.getAttribute('data-bs-idpd')
+
+		const modalTitle = laporanModal.querySelector('.modal-title')
+		modalTitle.textContent = opd
+		document.getElementById('pid_pd').value= idpd
+		document.getElementById('pid_sub_pd').value= idpd	
+		//modalBodyInput.value = recipient
+	})
+	}
+</script>
+
+{% include 'footer.html' %}

@@ -1,0 +1,176 @@
+{% include 'header.html' %}
+
+
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+
+			
+
+
+			<div class="row">
+				<div class="col-sm-10" style="margin: auto;">
+					
+					<div class="card tabs-card">
+						<div class="card-body">
+							<div class="page-header-title border-bottom pb-2 mb-2">
+								<h4>KINERJA KOTA TEGAL</h4>
+							</div>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr class="table-danger">
+											<th style="width: 40px;">No</th>
+											<th>Nama Laporan</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>
+												<a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-report-name="eval_rkpd" data-bs-report-namestr="Evaluasi Hasil RKPD"> Evaluasi Hasil RKPD </a>
+												
+											</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>
+												<a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-report-name="capaian_iku_kota" data-bs-report-namestr="Capaian IKU"> Capaian IKU </a>
+												
+											</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>
+												<a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-report-name="capaian_ikd" data-bs-report-namestr="Capaian IKD"> Capaian IKD </a>
+												
+											</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>
+												<a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-report-name="capaian_program" data-bs-report-namestr="Capaian Program"> Capaian Program </a>
+												
+											</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>
+												<a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-report-name="realisasi_anggaran_kota" data-bs-report-namestr="Pagu dan Realisasi Anggaran"> Pagu dan Realisasi Anggaran </a>
+												
+											</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>
+												<a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-report-name="efisiensi_kota" data-bs-report-namestr="Efisiensi dan Efektifitas Kinerja"> Efisiensi dan Efektifitas Kinerja </a>
+												
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		
+
+
+
+
+
+	</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="laporanModal" tabindex="-1" aria-labelledby="laporanModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="laporanModalLabel">Jenis Laporan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form action="{{ thisurl }}reports/preview" method="post" target="_blank">
+					<div class="row">
+						<div class="col-md-12">
+							
+								<input type="hidden" name="report_name" id="report_name">
+									
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							
+								<div class="mb-3"><label class="form-label" for="formLaporanKinerja1">Tahun</label> 
+									<select name="ptahun" class="form-select" id="formLaporanKinerja1">
+										<option>2021</option>
+										<option>2022</option>
+										<option>2023</option>
+										<option>2024</option>
+										<option value="2025" selected>2025</option>
+									</select>
+								</div>
+						</div>
+						<div class="col-md-6">
+							
+							<div class="mb-3"><label class="form-label" for="formLaporanKinerja1">Triwulan</label> 
+								<select name="ptw" class="form-select" id="formLaporanKinerja1">
+									<option value="1">I (Satu)</option>
+									<option value="2">II (Dua)</option>
+									<option value="3">III (Tiga)</option>
+									<option value="3">IV (Empat)</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<input type="hidden" name="pid_pd" id="pid_pd" value="0">
+							<input type="hidden" name="pid_sub_pd" id="pid_sub_pd"  value="0">
+							<input type="hidden" name="puser" value="guest">
+							<input type="hidden" name="pfooter" value="Tegal,..">
+							<input type="hidden" name="format" value="html">
+							<button type="submit" class="btn btn-primary mb-4">Tampilkan</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const laporanModal = document.getElementById('laporanModal')
+	if (laporanModal) {
+		laporanModal.addEventListener('show.bs.modal', event => {
+		const button = event.relatedTarget
+		console.log(button)
+		const report_name = button.getAttribute('data-bs-report-name')
+		const report_namestr = button.getAttribute('data-bs-report-namestr')
+
+		const modalTitle = laporanModal.querySelector('.modal-title')
+		modalTitle.textContent = report_namestr
+		document.getElementById('report_name').value= report_name
+		//modalBodyInput.value = recipient
+	})
+	}
+</script>
+
+
+{% include 'footer.html' %}

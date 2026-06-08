@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data Statistik Sektoral</title>
+
+
+    <!--[if lt IE 11]>
+    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Codedthemes" />
+
+    <link rel="icon" href="https://monevrkpd.tegalkota.go.id/emonev2023v2/assets/images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://monevrkpd.tegalkota.go.id/emonev2023v2/assets/css/prism-coy.css">
+
+    <link rel="stylesheet" href="https://monevrkpd.tegalkota.go.id/emonev2023v2/assets/css/style.css">
+    
+</head>
+
+<body style="padding: 20 10 0 10;">
+
+<h4>DATA STATISTIK SEKTORAL DAERAH</h4>
+<h5>BIDANG URUSAN :  URUSAN PEMERINTAHAN BIDANG PENDIDIKAN</h5>
+
+<div id="container" class="flex flex-col gap-5"></div>
+
+<div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="table-responsive">
+                            <div>
+                                <table class="table table-hover m-b-0 table-striped" id="table_dssd">
+                                    <thead>
+                                        <tr class="table-primary" style="vertical-align: middle;text-align: center;">
+                                            <th style="text-align:right">No</th>
+                                            <th style="text-align:left">Kode SSD</th>
+                                            <th style="text-align:left">Uraian</th>
+                                            <th style="text-align:left">Satuan</th>
+                                            <th style="text-align:left">Definisi Ops</th>
+                                            <th style="text-align:left">2018</th>
+                                            <th style="text-align:left">2019</th>
+                                            <th style="text-align:left">2020</th>
+                                            <th style="text-align:left">2021</th>
+                                            <th style="text-align:left">2022</th>
+                                            <th style="text-align:left">2023</th>
+                                            <th style="text-align:left">2024</th>
+                                            <th style="text-align:left">Ket</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                      
+                                        
+                                                                                    
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+</body>
+
+<script>
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let kodeurusan = params.k;
+    let tahun = params.t;
+    let xtkn = params.tkn;
+    console.log(kodeurusan);
+
+    const containerDisplay = document.getElementById('container');
+    const tableDssd = document.getElementById('table_dssd').tBodies[0];
+
+
+    const cardComponent = (xdata) => {
+        // Buat Card
+        console.log(xdata)
+        const data = `
+            <tr>
+                <td>1</td>
+                <td>${xdata.kode_ssd}</td>
+                <td>${xdata.uraian}</td>
+                <td>${xdata.satuan}</td>
+                <td>${xdata.definisi_operasional}</td>
+            </tr>
+        `
+
+        
+        tableDssd.insertAdjacentHTML('afterbegin', data)
+    }
+
+
+    const alertComponent = (message) => {
+        const data = `
+        <div class="alert alert-danger" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="width:32px">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                </svg>${message}
+        </div>
+        
+    `
+        containerDisplay.insertAdjacentHTML('afterbegin', data)
+    }
+
+    const fetchAllDatas = () => {
+        return fetch("http://localhost:8000/api/v1/pubapi/list-dssd?kodeurusan=1.01",
+                {
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+xtkn,
+                }
+                }
+            )
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                return response.json();
+            })
+            .catch((error) => {
+                return error;
+            });
+    };
+
+    function render() {
+        fetchAllDatas()
+            .then((response) => {
+                response.forEach(result => {
+                    cardComponent(result);
+                });
+            })
+            .catch((error) => {
+                alertComponent(error.message)
+            });
+    }
+
+    render()
+
+</script>
+
+</html>

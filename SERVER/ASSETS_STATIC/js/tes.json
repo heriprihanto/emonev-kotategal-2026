@@ -1,0 +1,61 @@
+{
+  "root": [
+    {
+      "value": "Visi : Visi 1",
+      "children": [
+        {
+          "value": "Misi 1",
+          "children": [
+            {
+              "value": "Tujuan 1",
+              "children": [
+                {
+                  "value": "Sasaran 1"
+                },
+                {
+                  "value": "Sasaran 2"
+                }
+              ]
+            },
+            {
+              "value": "Tujuan 2",
+              "children": [
+                {
+                  "value": "Sasaran 22"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Misi 2",
+          "children": [
+            {
+              "value": "Tujuan 2",
+              "children": [
+                {
+                  "value": "Sasaran 3"
+                },
+                {
+                  "value": "Sasaran 3"
+                }
+              ]
+            },
+            {
+              "value": "Tujuan 3",
+              "children": [
+                {
+                  "value": "Sasaran 4"
+                },
+                {
+                  "value": "Sasaran 44"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    
+  ]
+}

@@ -1,0 +1,19 @@
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr class="table-danger">
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for opd in opdlist %}
+			<tr>
+				<td><a target="_blank" href="https://monevrkpd.tegalkota.go.id/dokren/file/{{ opd[3] }}"> {{ opd[1] }}</a></td>
+			</tr>
+			{% endfor %}
+
+
+		</tbody>
+	</table>
+</div>
+

@@ -1,0 +1,22 @@
+<div class="table-responsive">
+	
+	<table class="table table-striped">
+		<thead>
+			<tr class="table-danger">
+				<th>No</th>
+				<th>Nama Dokumen</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for opd in opdlist %}
+			<tr>
+				<td>{{ loop.index0 + 1 }}</td>
+				<td><a target="_blank" href="files/{{ opd['filename'] }}">LKJIP Tahun {{ opd[7] }}</a></td>
+			</tr>
+			{% endfor %}
+
+
+		</tbody>
+	</table>
+</div>
+

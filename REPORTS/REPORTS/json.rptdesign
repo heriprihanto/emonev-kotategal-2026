@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">custom</property>
+            <property name="orientation">landscape</property>
+            <property name="topMargin">0.2in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0.2in</property>
+            <property name="rightMargin">0.2in</property>
+            <property name="height">8.5in</property>
+            <property name="width">13in</property>
+        </simple-master-page>
+    </page-setup>
+</report>

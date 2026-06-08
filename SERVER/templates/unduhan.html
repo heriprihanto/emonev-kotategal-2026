@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Beranda - {% endblock %}
+
+
+{% block content %}
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+
+
+
+
+			<div class="row">
+				<div class="col-sm-10" style="margin: auto;">
+
+					<div class="card tabs-card">
+						<div class="card-body">
+							<div class="page-header-title border-bottom pb-2 mb-2">
+								<h4>UNDUH DOKUMEN & MATERI</h4>
+
+							</div>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped">
+
+									<tbody>
+
+										{% set ns = namespace(c = 1) %}
+										{% for dx in datax['materi'] %}
+
+										<tr>
+											<td width="35">{{ ns.c }}</td>
+											<td><a href="https://monevrkpd.tegalkota.go.id/dokumen/{{dx.filename }}"
+													target="_blank"> {{dx.filename }}</a></td>
+										</tr>
+										{% set ns.c = ns.c + 1 %}
+
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

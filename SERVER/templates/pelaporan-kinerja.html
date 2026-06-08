@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% block title %}Beranda - {% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+
+			
+
+
+			<div class="row">
+				<div class="col-sm-10" style="margin: auto;">
+					
+					<div class="card tabs-card">
+						<div class="card-body">
+							<div class="page-header-title border-bottom pb-2 mb-2">
+								<h4>PELAPORAN KINERJA</h4>
+							</div>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<ul class="nav nav-pills nav-fill mb-3" role="tablist">
+								<li class="nav-item" role="presentation"><a class="nav-link active" data-bs-toggle="tab"
+										href="#kota" role="tab" aria-selected="true"><i
+											class="fa fa-book m-r-10"></i>KOTA</a>
+									<div class="slide bg-primary"></div>
+								</li>
+								<li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab"
+										href="#opd" role="tab" aria-selected="false" tabindex="-1"><i
+											class="fa fa-book m-r-10"></i>PERANGKAT DAERAH</a>
+									<div class="slide bg-success"></div>
+								</li>
+								
+							</ul>
+
+							<div class="tab-content">
+								<div class="tab-pane active show" id="kota" role="tabpanel">
+									<div class="table-responsive">
+										<table class="table table-striped">
+											<thead>
+												<tr class="table-danger">
+													<th width="35"></th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for opd in datax["lkjipkota"] %}
+												<tr>
+													<td>{{ loop.index0 + 1 }}</td>
+													<td><a target="_blank" href="files/{{ opd['filename'] }}">LKJIP Tahun {{ opd[7] }}</a></td>
+												</tr>
+												{% endfor %}
+		
+		
+											</tbody>
+										</table>
+									</div>
+									
+								</div>
+								<div class="tab-pane" id="opd" role="tabpanel">
+									<div class="table-responsive">
+										<table class="table table-striped">
+											<thead>
+												<tr class="table-danger">
+													<th width="35"></th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{% set ns = namespace(c = 1) %}	
+												{% for opd in opdlist %}
+												<tr>
+													<td>{{ ns.c }}</td>
+													<td><a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-idpd="{{ opd[1] }}" data-bs-pd="{{ opd[3] }}"> {{
+															opd[3] }}</a></td>
+												</tr>
+												{% set ns.c = ns.c + 1 %}
+												{% endfor %}
+		
+		
+											</tbody>
+										</table>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		
+
+
+
+
+
+	</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="laporanModal" tabindex="-1" aria-labelledby="laporanModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="laporanModalLabel">Jenis Dokumen Perencanaan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="divmodaldokrenpd">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const laporanModal = document.getElementById('laporanModal')
+	if (laporanModal) {
+		laporanModal.addEventListener('show.bs.modal', event => {
+		const button = event.relatedTarget
+		const opd = button.getAttribute('data-bs-pd')
+		const idpd = button.getAttribute('data-bs-idpd')
+
+		const modalTitle = laporanModal.querySelector('.modal-title')
+		modalTitle.textContent = opd
+
+		fetch('doklap/'+idpd)
+			.then((response) => {
+				return response.text();
+			})
+			.then((html) => {
+				document.getElementById('divmodaldokrenpd').innerHTML = html     
+			})
+			.catch(error => console.error('Error:', error));
+	
+
+		//modalBodyInput.value = recipient
+	})
+	}
+</script>
+
+{% endblock %}

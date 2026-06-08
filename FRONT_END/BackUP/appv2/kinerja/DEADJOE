@@ -1,0 +1,22 @@
+
+*** These modified files were found in JOE when it aborted on Thu May  2 12:07:09 2024
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+modern/src/view/tablet/rfk/FormSimda.js
+modern/src/view/tablet/rfk/FormSimda.js
+.env
+app/Config/Database.php
+app/Views/admin.php
+app/Config/App.php
+app/Views/welcome_message.php
+Kinerja.php
+Kinerja.php
+FormIndikator.js
+FormIndikator.js
+
+*** File '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc

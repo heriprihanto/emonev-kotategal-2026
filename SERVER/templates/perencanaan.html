@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% block title %}Beranda - {% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+
+			
+
+
+			<div class="row">
+				<div class="col-sm-10" style="margin: auto;">
+					
+					<div class="card tabs-card">
+						<div class="card-body">
+							<div class="page-header-title border-bottom pb-2 mb-2">
+								<h4>PERENCANAAN</h4>
+							</div>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<ul class="nav nav-pills nav-fill mb-3" role="tablist">
+								<li class="nav-item" role="presentation"><a class="nav-link active" data-bs-toggle="tab"
+										href="#kota" role="tab" aria-selected="true"><i
+											class="fa fa-book m-r-10"></i>KOTA</a>
+									<div class="slide bg-primary"></div>
+								</li>
+								<li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab"
+										href="#opd" role="tab" aria-selected="false" tabindex="-1"><i
+											class="fa fa-book m-r-10"></i>PERANGKAT DAERAH</a>
+									<div class="slide bg-success"></div>
+								</li>
+								
+							</ul>
+
+							<div class="tab-content">
+								<div class="tab-pane active show" id="kota" role="tabpanel">
+									<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+										  <h2 class="accordion-header">
+											<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											  <b>A. RPJPD</b>
+											</button>
+										  </h2>
+										  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+											<div class="accordion-body">
+												<div class="table-responsive" id="divrpjpd">
+													<table class="table table-striped" id="tabel_rpjpd">
+														
+														<tbody>
+			
+															{% set ns = namespace(c = 1) %}	
+															{% for dx in datax['dokrenkota'] %}
+																{% if dx.jenis == "RPJPD" %}
+																	<tr>
+																		<td width="35">{{ ns.c }}</td>
+																		<td><a href="{{dx.link }}" target="_blank"> {{dx.ket }}</a></td>
+																	</tr>
+																	{% set ns.c = ns.c + 1 %}
+																{% endif %}
+															{% endfor %}
+														</tbody>
+													</table>
+												</div>
+											
+											</div>
+										  </div>
+										</div>
+										<div class="accordion-item">
+										  <h2 class="accordion-header">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+											  <b>B. RPJMD</b>
+											</button>
+										  </h2>
+										  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+											<div class="accordion-body">
+												<table class="table table-striped">
+													
+													<tbody>
+														
+														{% set ns = namespace(c = 1) %}	
+														{% for dx in datax['dokrenkota'] %}
+															{% if dx.jenis == "RPJMD" %}
+																<tr>
+																	<td width="35">{{ ns.c }}</td>
+																	<td><a href="{{dx.link }}" target="_blank"> {{dx.ket }}</a></td>
+																</tr>
+																{% set ns.c = ns.c + 1 %}
+															{% endif %}
+														{% endfor %}
+		
+													</tbody>
+												</table>
+											</div>
+										  </div>
+										</div>
+										<div class="accordion-item">
+										  <h2 class="accordion-header">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+											  <b>C. RKPD</b>
+											</button>
+										  </h2>
+										  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+											<div class="accordion-body">
+												<table class="table table-striped">
+													
+													<tbody>
+														{% set ns = namespace(c = 1) %}	
+														{% for dx in datax['dokrenkota'] %}
+															{% if dx.jenis == "RKPD" %}
+																<tr>
+																	<td width="35">{{ ns.c }}</td>
+																	<td><a href="{{dx.link }}" target="_blank"> {{dx.ket }}</a></td>
+																</tr>
+																{% set ns.c = ns.c + 1 %}
+															{% endif %}
+														{% endfor %}
+		
+													</tbody>
+												</table>
+											</div>
+										  </div>
+										</div>
+									  </div>
+									
+								</div>
+								<div class="tab-pane" id="opd" role="tabpanel">
+									<div class="table-responsive">
+										<table class="table table-striped">
+											<thead>
+												<tr class="table-warning">
+													<th width="35"></th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{% set ns = namespace(c = 1) %}	
+												{% for opd in opdlist %}
+												<tr>
+													<td>{{ ns.c }}</td>
+													<td><a href="#" data-bs-toggle="modal" data-bs-target="#laporanModal" data-bs-idpd="{{ opd[1] }}" data-bs-pd="{{ opd[3] }}"> {{
+															opd[3] }}</a></td>
+												</tr>
+												{% set ns.c = ns.c + 1 %}
+												{% endfor %}
+		
+		
+											</tbody>
+										</table>
+
+
+										
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		
+
+
+
+
+
+	</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="laporanModal" tabindex="-1" aria-labelledby="laporanModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="laporanModalLabel">Jenis Dokumen Perencanaan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="divmodaldokrenpd">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const laporanModal = document.getElementById('laporanModal')
+	if (laporanModal) {
+		laporanModal.addEventListener('show.bs.modal', event => {
+		const button = event.relatedTarget
+		const opd = button.getAttribute('data-bs-pd')
+		const idpd = button.getAttribute('data-bs-idpd')
+
+		const modalTitle = laporanModal.querySelector('.modal-title')
+		modalTitle.textContent = opd
+
+		fetch('dokrenpd/'+idpd)
+			.then((response) => {
+				return response.text();
+			})
+			.then((html) => {
+				document.getElementById('divmodaldokrenpd').innerHTML = html     
+			})
+			.catch(error => console.error('Error:', error));
+	
+
+		//modalBodyInput.value = recipient
+	})
+	}
+</script>
+
+{% endblock %}

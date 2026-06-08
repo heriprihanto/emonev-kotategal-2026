@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>e-Monev Perencanaan Pembangunan Kota Tegal</title>
+
+
+		<!--[if lt IE 11]>
+		    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		    	<![endif]-->
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="description" content=""/>
+		<meta name="keywords" content="">
+		<meta name="author" content="Codedthemes"/>
+
+		<link rel="icon" href="https://monevrkpd.tegalkota.go.id/cdn/emonev2025/assets/images/favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" href="https://monevrkpd.tegalkota.go.id/cdn/emonev2025/assets/css/prism-coy.css">
+
+		<link rel="stylesheet" href="https://monevrkpd.tegalkota.go.id/cdn/emonev2025/assets/css/style.css">
+	</head>
+
+	<body    style="background-image: url(https://monevrkpd.tegalkota.go.id/cdn/images/bg-2333644xxx.jpg); background-size: cover;">
+
+		<div class="loader-bg">
+			<div class="loader-track">
+				<div class="loader-fill"></div>
+			</div>
+		</div>
+
+
+		<nav class="pcoded-navbar theme-horizontal menu-light brand-blue">
+			<div class="navbar-wrapper">
+				<div class="navbar-content sidenav-horizontal" id="layout-sidenav">
+					<ul class="nav pcoded-inner-navbar sidenav-inner">
+						<li class="nav-item">
+							<a href="{{ thisurl }}" class="nav-link ">
+								<span class="pcoded-micon">
+									<i class="feather icon-home"></i>
+								</span>
+								<span class="pcoded-mtext">Beranda</span>
+							</a>
+
+						</li>
+						
+
+						<li class="nav-item">
+							<a href="{{ thisurl }}page/perencanaan" class="nav-link ">
+								<span class="pcoded-micon">
+									<i class="feather icon-calendar"></i>
+								</span>
+								<span class="pcoded-mtext">Perencanaan</span>
+							</a>
+						</li>
+						
+
+						<li class="nav-item">
+							<a href="{{ thisurl }}page/pengukuran-kinerja" class="nav-link ">
+								<span class="pcoded-micon">
+									<i class="feather icon-pie-chart"></i>
+								</span>
+								<span class="pcoded-mtext">Pengukuran Kinerja</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="{{ thisurl }}page/pelaporan-kinerja" class="nav-link ">
+								<span class="pcoded-micon">
+									<i class="feather icon-book"></i>
+								</span>
+								<span class="pcoded-mtext">Pelaporan Kinerja</span>
+							</a>
+						</li>
+						
+						<li class="nav-item">
+							<a href="{{ thisurl }}page/evaluasi-kinerja" class="nav-link "><span class="pcoded-micon"><i class="feather icon-edit"></i></span><span class="pcoded-mtext">Evaluasi Kinerja</span></a>
+						</li>
+
+						<li class="nav-item">
+							<a href="{{ thisurl }}page/unduhan" class="nav-link "><span class="pcoded-micon"><i class="feather icon-download"></i></span><span class="pcoded-mtext">Dokumen & Materi</span></a>
+						</li>
+						<!--
+						<li class="nav-item pcoded-hasmenu">
+							<a href="#" class="nav-link ">
+								<span class="pcoded-micon">
+									<i class="feather icon-menu"></i>
+								</span>
+								<span class="pcoded-mtext">Cascading</span>
+							</a>
+							<ul class="pcoded-submenu">
+								<li>
+									<a href="{{ thisurl }}page/pohon-kinerja">Pohon Kinerja</a>
+								</li>
+								<li>
+									<a href="{{ thisurl }}page/struktur-kinerja">Struktur Kinerja</a>
+								</li>
+							</ul>
+						</li>
+						-->
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+		<header class="navbar pcoded-header navbar-expand-lg header-blue navbar-light header-orchidgreen">
+			<div class="m-header">
+				<a class="mobile-menu" id="mobile-collapse" href="#">
+					<span></span>
+				</a>
+				<a href="#" class="b-brand">
+
+					<img src="https://monevrkpd.tegalkota.go.id/cdn/emonev2025/assets/images/logo.png" alt="" class="logo">
+					<img src="https://monevrkpd.tegalkota.go.id/cdn/emonev2025/assets/images/logo-icon.png" alt="" class="logo-thumb">
+				</a>
+				<a href="#" class="mob-toggler">
+					<i class="feather icon-more-vertical"></i>
+				</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a href="#" class="pop-search">
+							<i class="feather icon-search"></i>
+						</a>
+						<div class="search-bar">
+							<form action="{{
+							thisurl }}pencarian" method="post">
+								<input type="text" name="keyword" class="form-control border-0 shadow-none" placeholder="Pencarian ...">
+								<button type="button" class="btn-close" aria-label="Close"></button>
+							</form>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="full-screen" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:toggleFullScreen()" data-cf-modified-6c81dfeb5b8c96ba5f303adf-="">
+							<i class="feather icon-maximize"></i>
+						</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav ms-auto">
+
+					<li>
+						<div class="dropdown drp-user">
+							<a href="#" class="btn  btn-danger" data-bs-toggle="dropdown">
+								<i class="feather icon-user"></i>Login (Pilih Tahun)
+							</a>
+							<div class="dropdown-menu dropdown-menu-end profile-notification">
+
+								<ul class="pro-body">
+                                    <li>
+										<a href="https://monevrkpd.tegalkota.go.id/emonev2025-admin" class="dropdown-item">2025</a>
+									</li>
+                    
+									<li>
+										<a href="{{ thisurl }}../emonev2024v2" class="dropdown-item">2024</a>
+									</li>
+									<li>
+										<a href="{{ thisurl }}../emonev2023" class="dropdown-item">2023</a>
+									</li>
+									<li>
+										<a href="{{ thisurl }}../emonev2022" class="dropdown-item">2022</a>
+									</li>
+									<li>
+										<a href="{{ thisurl }}../emonev2021" class="dropdown-item">2021</a>
+									</li>
+									<li>
+										<a href="{{ thisurl }}../emonev2020" class="dropdown-item">2020</a>
+									</li>
+                                    <li>
+										<a href="{{ thisurl }}../emonev2019" class="dropdown-item">2019</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</header>

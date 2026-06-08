@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% block title %}Beranda - {% endblock %}
+
+
+{% block content %}
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="page-wrapper">
+		<!--
+			<div class="row">
+				<div class="col-lg-12 col-xl-12">
+				<div class="card">
+					<div class="card-body">
+						<h6>TENTANG E-MONEV PERENCANAAN</h6>
+						<p>E-Monev Perencanaan merupakan aplikasi berbasis web untuk memudahkan pemantauan & pengendalian proses evaluasi kinerja Perangkat Daerah maupun tingkat Pemerintah Kota Semarang. Data / Informasi yang dihasilkan dari aplikasi e Monev Perencanaan ini dapat diakses oleh publik, dengan harapan masyarakat dapat turut serta memantau, menilai serta memberikan masukan guna meningkatkan kualitas pelayanan Pemerintah Kota Semarang.
+
+Pengembangan Aplikasi ini mendasarkan pada amanat Permendagri No.86 tahun 2017 tentang Evaluasi terhadap Hasil Rencana Pembangunan Daerah. Dalam Aplikasi ini dilakukan pengolahan data dan informasi berkaitan dengan capaian indikator pada level output, outcome maupun impact yang termuat dalam dokumen perencanaan, mulai dari Evaluasi Hasil Rencana Kerja (Renja) OPD, Evaluasi Hasil Renstra OPD, Evaluasi Hasil RKPD, dan Evaluasi Pelaksanaan RPJMD yang merupakan data olah dari server mirror SIPD.
+
+Selain itu juga ditampilkan Visual grafis capaian Indikator Kinerja Utama (IKU) Pemda, IKU OPD, Indikator Kinerja Daerah dan Capaian Misi Pembangunan , Serapan APBD serta Kesesuaian Program , Kegiatan, Sub Kegiatan antara RPJMD, RKPD dan APBD.</p>
+					</div>
+					</div>
+				</div>
+			</div>	
+		-->
+
+			<div class="row">
+				<div class="page-header-title border-bottom pb-2 mb-2">
+					<h4>e-Monev Kota Tegal Tahun 2026</h4>
+				</div>
+				
+
+				<div class="col-md-6 col-xl-2">
+					<div class="card bg-c-blue order-card">
+						<div class="card-body">
+							<h6 class="text-white">Program RPD</h6>
+							<h2 class="text-end text-white">
+								<i class="feather icon-book float-start"></i>
+								<span>{{ datax['jmlprogram'][0][0] }}</span>
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-xl-2">
+					<div class="card bg-c-green order-card">
+						<div class="card-body">
+							<h6 class="text-white">Program RKPD</h6>
+							<h2 class="text-end text-white">
+								<i class="feather icon-file float-start"></i>
+								<span>{{ datax['jmlprogram'][0][0] }}</span>
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-xl-2">
+					<div class="card bg-c-yellow order-card">
+						<div class="card-body">
+							<h6 class="text-white">Total Anggaran</h6>
+							<h2 class="text-end text-white">
+								<span>{{ datax['jmlanggaran'][0][0] }} T</span>
+							</h2>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-2">
+					<div class="card bg-c-blue order-card">
+						<div class="card-body">
+							<h6 class="text-white">Serapan Anggaran</h6>
+							<h2 class="text-end text-white">
+								<span>{{ datax['jmlrealisasi'][0][0] }} M</span>
+							</h2>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-2">
+					<div class="card bg-c-green order-card">
+						<div class="card-body">
+							<h6 class="text-white">Kegiatan</h6>
+							<h2 class="text-end text-white">
+								<span>{{ datax['jmlkegiatan'][0][0] }} </span>
+							</h2>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-2">
+					<div class="card bg-c-red order-card">
+						<div class="card-body">
+							<h6 class="text-white">Sub Kegiatan</h6>
+							<h2 class="text-end text-white">
+								<span>{{ datax['jmlsubkegiatan'][0][0] }} </span>
+							</h2>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<h5 class="m-b-10">Indikator Makro</h5>
+
+				{% for opd in datax["indikatormakro"] %}
+					<div class="col-md-12 col-xl-3">
+						<div class="card">
+							<div class="card-header">
+								<h5><a href="indikator/{{ opd[7] }}">{{ opd[0] }}</a></h5>
+							</div>
+							<div class="card-body ps-0 pb-0">
+								<div id="chart-ind-makro-{{ loop.index0 + 1 }}"></div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+
+const strtahun = ['2021', '2022', '2023', '2024', '2025'];
+const strcolor = ["#0d6ef","#6f42c1","#dc3545","#ffc107","#20c997"]
+
+let xdata=[]
+
+{% for op in datax["indikatormakro"] %}
+	xdata[{{ loop.index0 +1}}] = [ {{ op[2] }},{{ op[3] }},{{ op[4] }},{{ op[5] }},{{ op[6] }}];
+{% endfor %}
+//const xdata1 = [{{ datax["indikatormakro"][0][2] }}]
+
+var optionchart = function(num) {
+	return {
+					series: [{name: "",	data: xdata[num] }],
+					chart: {height: 200,type: 'line',zoom: {enabled: false}},
+					dataLabels: {enabled: false},
+					stroke: { width: 3,curve: 'straight'},
+					grid: {row: {colors: ['#f3f3f3', 'transparent'], opacity: 0.5},},
+					xaxis: {categories: strtahun},
+					colors: [strcolor[num]],
+					markers: {size: 5},
+			}
+}
+
+const chart1 = new ApexCharts(document.querySelector("#chart-ind-makro-1"), optionchart(1));
+chart1.render();
+
+const chart2 = new ApexCharts(document.querySelector("#chart-ind-makro-2"), optionchart(2));
+chart2.render();
+
+const chart3 = new ApexCharts(document.querySelector("#chart-ind-makro-3"), optionchart(3));
+chart3.render();
+
+const chart4 = new ApexCharts(document.querySelector("#chart-ind-makro-4"), optionchart(4));
+chart4.render();
+
+</script>
+	
+			<div class="row">
+
+				<h5 class="m-b-10">Indikator Kinerja Utama (IKU)</h5>
+				<div class="col-md-12">
+					<div class="card">
+						<div class="table-responsive">
+                    <div class="customer-scroll">
+                    <table class="table table-hover m-b-0 table-striped">
+                    <thead>
+                    <tr class="table-success">
+                    <th><span>No</span></th>
+                    <th><span>Indikator</span></th>
+                    <th><span>Satuan</span></th>
+                    <th><span>Target</span></th>
+                    <th><span>Capaian</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+						{% for dx in datax["ikukota"] %}
+							<tr>
+								<td>{{ loop.index0 +1  }}</td>
+								<td><a href="indikator/{{ dx['id'] }}"> {{ dx['tolok_ukur'] }} </a></td>
+								<td>{{ dx[1] }}</td>
+								<td>{{ dx[2] }}</td>
+								<td>{{ dx[8] }}</td>
+							</tr>
+						{% endfor %}
+
+                    </tbody>
+                    </table>
+                    </div>
+						
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+			
+
+{% endblock %}
